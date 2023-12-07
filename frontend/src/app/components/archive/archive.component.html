@@ -1,0 +1,19 @@
+<h2 class="text-center mt-4 mb-5">My Archived Notes</h2>
+
+<div class="text-center mb-4">
+  <label for="categoryFilter">Filter by Category:</label>
+  <select id="categoryFilter" class="form-select form-select-sm" style="width: 150px;
+  margin: 0 auto;" (change)="onCategoryFilterChange($event)">
+    <option value="" selected>All Categories</option>
+    <option *ngFor="let category of categories" [value]="category.id">{{ category.category }}</option>
+  </select>
+</div>
+
+
+<div class="container d-flex flex-wrap justify-content-center">
+  <app-listnotes class="mb-4" *ngFor="let note of filteredNotes" [id]="note.id"
+    [content]="note.content" [title]="note.title" [edit]="note.lastEdit"
+    [creation]="note.creationDate" [archived]="note.archived" [categories]="note.categories"
+    (noteDeleted)="onNoteDeleted($event)">
+  </app-listnotes>
+</div>

@@ -1,0 +1,19 @@
+
+
+<div class="card me-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{title}}</h5>
+      <span class="badge text-bg-primary me-1" *ngFor="let category of categories">{{category.category}}</span>
+      <p class="card-text mt-1">{{content}}</p>
+      <a *ngIf="!archived" (click)="editNote()" class="card-link">Edit</a>
+      <a *ngIf="!archived" (click)="deleteNote(id)" class="card-link">Delete</a>
+      <a (click)="archiveNote(id)" class="card-link">
+        {{ archived ? 'Unarchive' : 'Archive' }}
+      </a>
+    </div>
+    <div class="card-footer text-body-secondary">
+        <small class="me-2">Last Edited:{{edit | date : 'shortDate'}}</small>
+        <small>Created: {{creation | date : 'shortDate'}}</small>
+    </div>
+  </div>
+

@@ -1,0 +1,25 @@
+<form [formGroup]="newNoteForm" (ngSubmit)="onSubmit()" class="mb-2 mx-3">
+
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" formControlName="title"
+         id="title" placeholder="New Note Title">
+    </div>
+
+    <div class="input-group">
+        <textarea class="form-control" id="noteContent" formControlName="noteContent"
+         aria-label="New note conent"></textarea>
+    </div>
+
+    <div *ngFor="let category of categories; let i = index" class="p-2">
+        <div class="form-check form-check-inline"> 
+            <input type="checkbox" id="{{category.id}}" [value]="category.id" class="form-check-input" (change)="onCheckboxChange($event)" />
+            <label class="form-check-label" for="{{category.id}}">{{category.category}}</label>
+        </div>
+    </div>
+    
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Create New Note</button>
+    </div>
+    
+</form>
